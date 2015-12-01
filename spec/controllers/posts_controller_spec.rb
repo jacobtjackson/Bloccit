@@ -10,11 +10,11 @@ let (:my_post) {Post.create!(title: RandomData.random_sentence, body: RandomData
       get :index
       expect(response).to have_http_status(:success)
     end
-  end
 
-  it "assigns [my_post] to @posts" do
-    get :index
-    expect(assigns(:posts)).to eq([my_post])
+    it "assigns [my_post] to @posts" do
+      get :index
+      expect(assigns(:posts)).to eq([my_post])
+    end
   end
 
   describe "GET show" do
@@ -32,7 +32,7 @@ let (:my_post) {Post.create!(title: RandomData.random_sentence, body: RandomData
       get :show, {id: my_post.id}
       expect(assigns(:post)).to eq(my_post)
     end
-   end
+  end
 
   describe "GET new" do
     it "returns http success" do
@@ -101,7 +101,8 @@ let (:my_post) {Post.create!(title: RandomData.random_sentence, body: RandomData
        expect(updated_post.title).to eq new_title
        expect(updated_post.body).to eq new_body
      end
-     it "redirects to the updatd post" do
+     
+     it "redirects to the updated post" do
        new_title = RandomData.random_sentence
        new_body = RandomData.random_paragraph
 
