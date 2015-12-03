@@ -1,5 +1,25 @@
 include RandomData
 
+#Create topics
+15.times do
+  Topic.create!(
+    name: RandomData.random_sentence,
+    description: RandomData.random_paragraph
+  )
+end
+
+topics = Topic.all
+
+15.times do
+  SponsoredPost.create!(
+    title: RandomData.random_sentence,
+    body: RandomData.random_paragraph,
+    price: 50
+  )
+end
+
+sponsored_posts = SponsoredPost.all
+
 #Create Posts
 50.times do
   Post.create!(
@@ -25,5 +45,7 @@ end
 Comment.find_or_create_by(body: "This is the real body")
 
 puts "Seed finished"
+puts "#{SponsoredPost.count} sponsored posts created"
+puts "#{Topic.count} topics created"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
