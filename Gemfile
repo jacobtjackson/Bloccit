@@ -31,3 +31,6 @@ gem 'turbolinks'
 gem 'pry-rails'
 
 gem 'bootstrap-sass'
+
+#Used for encrypting User passwords
+gem 'bcrypt'
