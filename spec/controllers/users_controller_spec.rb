@@ -54,4 +54,14 @@ RSpec.describe UsersController, type: :controller do
       expect(assigns(:user).password_confirmation).to eq new_user_attributes[:password_confirmation]
     end
   end
+
+  describe "POST confirm" do
+    it "should create a new user" do
+      expect{
+        post :confirm, user: new_user_attributes
+      }.to change(User, :count).by(1)
+    end
+
+    it "should "
+
 end
