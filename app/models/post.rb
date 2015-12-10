@@ -36,8 +36,7 @@ class Post < ActiveRecord::Base
   private
 
   def create_favorite
-    user.favorites.build(post: self)
-    post.favorites.each do |favorite|
-      FavoriteMailer.new_post(favorite.user, self).deliver_now
+    Favorite.create(post: self, user: self.user)
+    FavoriteMailer.new_post(self).deliver_now
   end
 end
