@@ -73,5 +73,22 @@ RSpec.describe Post, type: :model do
         expect(post.rank).to eq (old_rank - 1)
       end
     end
+
+    describe "#create_favorite" do
+      it "creates a favorite when the user creates a post" do
+        post = topic.posts.new(title: RandomData.random_sentence, body: RandomData.random_paragraph, user: user )
+        expect(post.favorites).not_to be_nil
+        post.save
+      end
+
+      it "calls create_favorite when post is created" do
+        post = topic.posts.new(title: RandomData.random_sentence, body: RandomData.random_paragraph, user: user)
+        expect(post).to receive(:create_favorite)
+      end
+
+      it "ensures first favorite is from creator" do
+        expect(post.favorites.first.user).to eq(post.user)
+      end
+    end
   end
 end
