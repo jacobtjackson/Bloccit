@@ -3,7 +3,10 @@ include RandomData
 include SessionsHelper
 
 RSpec.describe TopicsController, type: :controller do
-  let (:my_topic) { Topic.create!(name:  RandomData.random_sentence, description:   RandomData.random_paragraph) }
+  let (:my_topic) { create(:topic) }
+  let(:my_user) { create(:user) }
+  let(:other_user) { create(:user) }
+  let(:my_post) { create(:post, topic: my_topic, user: my_user) }
 
   context "guest" do
     describe "GET index" do
