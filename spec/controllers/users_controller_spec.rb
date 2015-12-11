@@ -81,5 +81,26 @@ RSpec.describe UsersController, type: :controller do
       get :show, {id: factory_user.id}
       expect(assigns(:user)).to eq(factory_user)
     end
-   end
+
+    it "displays a list of posts the user has favorited" do
+      get :show, {id: factory_user.id}
+      expect(response).to include(factory_user.favorites)
+    end
+
+    it "displays the user's gravatar" do
+      get :show, {id: factory_user.id}
+      expect(response).to include(factory_user.avatar_url(128))
+    end
+
+    it "displays the user's votes" do
+      get :show, {id: factory_user.id}
+      expect(response).to include(factory_user.votes.count)
+    end
+
+    it "displays the user's comments" do
+      get :show, {id: factory_user.id}
+      expect(response).to include(factory_user.comments.count)
+    end
+
+  end
 end
