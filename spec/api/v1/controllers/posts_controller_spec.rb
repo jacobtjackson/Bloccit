@@ -17,6 +17,12 @@ RSpec.describe Api::V1::PostsController, type: :controller do
       get :show, id: my_post.id
       expect(response).to have_http_status(:success)
     end
+
+    it "GET show returns child comments" do
+      get :show, id: my_post.id
+      response_hash = JSON.parse response.body
+      expect(response_hash['comments']).to_not be_nil
+    end
   end
 
   context "unathorized user" do
@@ -32,6 +38,12 @@ RSpec.describe Api::V1::PostsController, type: :controller do
     it "GET show returns http success" do
       get :show, id: my_post.id
       expect(response).to have_http_status(:success)
+    end
+
+    it "GET show returns child comments" do
+      get :show, id: my_post.id
+      response_hash = JSON.parse response.body
+      expect(response_hash['comments']).to_not be_nil
     end
   end
 end
