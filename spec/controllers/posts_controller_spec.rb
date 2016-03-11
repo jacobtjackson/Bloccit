@@ -64,7 +64,7 @@ RSpec.describe TopicsController, type: :controller do
         new_name = RandomData.random_sentence
         new_description = RandomData.random_paragraph
 
-        put :update, id: my_topic.id, topic: {name: new_name, description: new_description }
+        put :update, topic_id: my_topic.id, id: my_post.id, post: {name: new_name, description: new_description }
         expect(response).to redirect_to(new_session_path)
       end
     end

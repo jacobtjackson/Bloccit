@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="Rails Bloccit: test" uuid="1501312a-845d-4217-a269-1c059986104b">
+      <auth-required>false</auth-required>
+    </data-source>
+    <data-source name="Rails Bloccit: development" uuid="be540070-86ed-4575-8f1c-c045f0e9e830">
+      <auth-required>false</auth-required>
+    </data-source>
+  </component>
+</project>
